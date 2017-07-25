@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EcSample</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+   
+    <h1>EC Sample</h1>
+
+    <% if user_signed_in? %>
+      Logged in as <strong><%= current_user.name %></strong><br>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>｜
+      <%= link_to "My Page", user_show_path(current_user.name) %>｜
+      <%= link_to "Top", goods_path %><br><br>
+
+    <% else %>
+      <%= link_to "Sign Up", new_user_registration_path %>｜
+      <%= link_to "Sign In", new_user_session_path %>｜
+      <%= link_to "Top", goods_path %>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

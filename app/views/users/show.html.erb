@@ -1,0 +1,14 @@
+<% if current_user.id == @user.id %>
+  <%= link_to 'Display New Goods', new_good_path %>｜
+  <%= link_to 'Edit Profile', edit_user_registration_path %><br><br>
+<% end %>
+
+
+<h1><%= @user[:name] %></h1>
+<p><%= @user[:profile] %></p>
+
+<p>
+
+Exhibitted Goods
+
+</p>

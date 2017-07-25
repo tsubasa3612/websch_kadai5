@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Enjoy Shopping</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Exhibitted Now</th>
+<!--       <th>Price</th>
+      <th>Description</th> -->
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @goods.each do |good| %>
+      <tr>
+        <td><%= link_to good.name, good_path(good) %></td>
+<!--         <td><%= good.price %></td>
+        <td><%= good.description %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
