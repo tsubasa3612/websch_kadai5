@@ -1,15 +1,18 @@
 class GoodsController < ApplicationController
   before_action :set_good, only: [:show, :edit, :update, :destroy]
+  add_breadcrumb "Goods Top", :goods_path
 
   # GET /goods
   # GET /goods.json
   def index
-    @goods = Good.all
+    @goods = Good.page(params[:page]).per(20)
   end
+
 
   # GET /goods/1
   # GET /goods/1.json
   def show
+    add_breadcrumb "Good", :good_path
   end
 
   # GET /goods/new
@@ -69,6 +72,6 @@ class GoodsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def good_params
-      params.require(:good).permit(:name, :price, :description, :user_id, :user_name)
+      params.require(:good).permit(:name, :price, :description, :user_id, :user_name, :image1 )
     end
 end

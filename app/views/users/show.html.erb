@@ -1,14 +1,21 @@
-<% if current_user.id == @user.id %>
-  <%= link_to 'Display New Goods', new_good_path %>｜
-  <%= link_to 'Edit Profile', edit_user_registration_path %><br><br>
-<% end %>
+<body style="margin-top:90px;">
+
+	<% if current_user.id == @user.id %>
+	  <%= link_to 'Display New Goods', new_good_path, :class => 'btn btn-info' %>
+	  <%= link_to 'Edit Profile', edit_user_registration_path, :class => 'btn btn-info' %>
+	<% end %>
 
 
-<h1><%= @user[:name] %></h1>
-<p><%= @user[:profile] %></p>
+	<h1><%= @user[:name] %></h1>
+	<p><%= @user[:profile] %></p>
 
-<p>
+	<p>
+	<strong>Exhibitted Goods</strong>
+	</p>
 
-Exhibitted Goods
-
-</p>
+	<p>
+	<% @user.goods.each do |good| %>
+	  <%= link_to good.name, good_path(good) %><br>
+	<% end %>
+	</p>
+</body>

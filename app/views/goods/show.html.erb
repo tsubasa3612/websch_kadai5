@@ -1,28 +1,43 @@
-<p id="notice"><%= notice %></p>
+<body style="margin-top:90px;">
 
-<p>
-  <strong>Name:</strong>
-  <%= @good.name %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @good.price %>
-</p>
+  <%= render_breadcrumbs separator: ' > ' %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @good.description %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @good.name %>
+  </p>
 
-<p>
-  <strong>Displayed by:</strong>
-  <%= link_to @good.user_name, user_show_path(@good.user_name) %>
-</p>
+  <p>
+    <strong>Image</strong>
+    <% if @good.image1? %>
+      <%= image_tag @good.image1.url %>
+    <% else %>
+      <p>画像がありません</p>
+    <% end %>
+  </p>
 
-<% if current_user.id == @good.user_id %>
-  <%= link_to 'Edit', edit_good_path(@good) %> |
-  <%= link_to 'Delete', @good, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<% end %>
+  <p>
+    <strong>Price:</strong>
+    <%= @good.price %>
+  </p>
 
-<%= link_to 'Back', goods_path %>
+  <p>
+    <strong>Description:</strong>
+    <%= @good.description %>
+  </p>
+
+  <p>
+    <strong>Displayed by:</strong>
+    <%= link_to @good.user_name, user_show_path(@good.user_name) %>
+  </p>
+
+  <% if current_user.id == @good.user_id %>
+    <%= link_to 'Edit', edit_good_path(@good), :class => 'btn btn-info' %>
+    <%= link_to 'Delete', @good, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-info' %>
+  <% end %>
+
+  <%= link_to 'Back', goods_path, :class => 'btn btn-info' %>
+
+</body>
