@@ -17,7 +17,11 @@ class GoodsController < ApplicationController
 
   # GET /goods/new
   def new
-    @good = Good.new
+    if user_signed_in?
+      @good = Good.new
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /goods/1/edit
