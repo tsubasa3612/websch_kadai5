@@ -1,4 +1,5 @@
 class GoodsController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
   before_action :set_good, only: [:show, :edit, :update, :destroy]
   add_breadcrumb "Goods Top", :goods_path
 
@@ -17,11 +18,11 @@ class GoodsController < ApplicationController
 
   # GET /goods/new
   def new
-    if user_signed_in?
+    # if user_signed_in?
       @good = Good.new
-    else
-      redirect_to root_path
-    end
+    # else
+    #   redirect_to root_path
+    # end
   end
 
   # GET /goods/1/edit
